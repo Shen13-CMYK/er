@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageDraw
 import matplotlib.pyplot as plt
 
 def flip_image_lr(image_path):
@@ -16,3 +16,15 @@ def flip_image_lr(image_path):
     axes[1].axis('off')
     plt.show()
     return flipped
+
+# 自动生成一张测试图片
+def make_test_image():
+    img = Image.new('RGB', (400, 300), 'white')
+    d = ImageDraw.Draw(img)
+    d.polygon([(80, 150), (250, 150), (250, 100), (350, 150), (250, 200), (250, 150)], fill='red')
+    d.text((160, 250), 'Before', fill='black')
+    img.save('test.jpg')
+
+if __name__ == '__main__':
+    make_test_image()
+    flip_image_lr('test.jpg')
