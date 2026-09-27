@@ -2,6 +2,8 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 def flip_image_lr(image_path):
-    # 第一步：读取图片
+    # 读取图片
     img = Image.open(image_path)
-    return img
+    # 左右翻转
+    flipped = img.transpose(Image.FLIP_LEFT_RIGHT)
+    return flipped
